@@ -7,6 +7,7 @@ urlpatterns = [
     
     path('', views.get_todos, name="todos"),
     path('create', views.create_todo, name = "create-todo"),
+    path('<str:pk>/update', views.update_todo, name="update-todo"),
     path('<str:pk>', views.get_todo, name="todo"),
     path('<str:pk>/delete', views.delete_todo, name="delete-todo"),
 ]

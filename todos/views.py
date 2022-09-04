@@ -69,3 +69,15 @@ def delete_todo(request, pk):
     todo = Todo.objects.get(id=pk)
     todo.delete()
     return Response("Todo was deleted!")
+
+
+@api_view(['PUT'])
+def update_todo(request, pk):
+    data = request.data
+    note = Todo.objects.get(id=pk)
+    serializer = TodoSerializer(instance=note, data=data)
+    
+    if serializer.is_valid():
+        serializer.save()
+    
+    return Response(serializer.data)
