@@ -3,11 +3,18 @@
 Web interfaces for a WG.
 
 Tasks:
-- [ ] Todo
+- [x] Todo
 - [ ] Calendar
 - [ ] Money management
 - [ ] User Authentification
 
+# Current state of the project
+
+<p align="left">
+<image src="icons/Todos.png" width = "700">
+<spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
+<image src=icons/Todo_example.png width = "211">
+</p>
 
 # Commands
 ## Django
