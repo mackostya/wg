@@ -7,16 +7,16 @@ export const SidebarData = [
     {
         title: "home",
         icon: <HomeIcon/>, 
-        link: "/home"
+        link: "/home/"
     },
     {
         title: "todos",
         icon: <CheckBoxIcon/>, 
-        link: "/todos"
+        link: "/todos/"
     },
     {
         title: "calendar",
         icon: <CalendarMonthIcon/>, 
-        link: "/calendar"
+        link: "/calendar/"
     }
 ]

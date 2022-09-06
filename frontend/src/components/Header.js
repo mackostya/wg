@@ -2,8 +2,8 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div>
-        <h1>This is the Header</h1>
+    <div className='Header'>
+        <h1>The ultimate WG App</h1>
     </div>
   )
 }
