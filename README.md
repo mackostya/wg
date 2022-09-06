@@ -11,9 +11,9 @@ Tasks:
 # Current state of the project
 
 <p align="left">
-<image src="icons/Todos.png" width = "700">
+<image src="icons/Todos.png" width = "600">
 <spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
-<image src=icons/Todo_example.png width = "211">
+<image src=icons/Todo_example.png width = "181">
 </p>
 
 # Commands
