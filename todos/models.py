@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 class Todo(models.Model):
     body = models.TextField(null=True, blank=True)
-    deadline = models.DateTimeField(null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     
