@@ -6,6 +6,7 @@ import Header from './components/Header';
 
 import TodosListPage from './pages/TodosListPage'
 import TodoPage from './pages/TodoPage'
+import CalendarPage from './pages/CalendarPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Routes>
                 <Route path="/todos/" element={<TodosListPage/>}/>
                 <Route path="/todos/todo/:id" element={<TodoPage/>}/>
+                <Route path="/calendar/" element={<CalendarPage/>}/>
               </Routes>
             </Router>
           </div>
