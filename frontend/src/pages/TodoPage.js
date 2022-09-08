@@ -74,20 +74,24 @@ const TodoPage = () => {
     }
 
     return (
-        <div className="todo">
-            <div className="todo-header">
-                <h3>
-                    <ArrowLeft onClick={handleSubmit}/>
-                </h3>
-                {todoId !== 'new' ? (
-                    <button onClick={deleteTodo}>Delete</button>
-                ): (
-                    <button onClick={handleSubmit}>Done</button>
-                )}
-                
+        <div className = "container dark">
+            <div className='app'>
+            <div className="todo">
+                <div className="todo-header">
+                    <h3>
+                        <ArrowLeft onClick={handleSubmit}/>
+                    </h3>
+                    {todoId !== 'new' ? (
+                        <button onClick={deleteTodo}>Delete</button>
+                    ): (
+                        <button onClick={handleSubmit}>Done</button>
+                    )}
+                    
+                </div>
+                <textarea onChange={(e) => {handleChange(e.target.value)}} value = {todo?.body}/>
             </div>
-            <textarea onChange={(e) => {handleChange(e.target.value)}} value = {todo?.body}/>
-        </div>
+            </div>
+        </div>   
     )
 }
 

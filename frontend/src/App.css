@@ -138,8 +138,8 @@ a {
 
 .app {
   float: right;
-  width: 70%;
-  max-width: 480px;
+  width: 100%;
+  max-width: 600px;
   height: 88vh;
   margin: 0 auto;
   background-color: var(--color-white);
@@ -291,4 +291,13 @@ a {
 
 .todo textarea::-webkit-scrollbar {
   display: none;
+}
+
+/*============CALENDAR============*/
+
+.fc { /* the calendar root */
+  height: 100vh;
+  width: 100vh;
+  margin: 0;
+  padding: 0;
 }

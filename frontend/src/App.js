@@ -16,8 +16,6 @@ function App() {
         <div>
           <Sidebar/>
         </div>
-        <div className = "container dark">
-          <div className='app'>
             <Router>
               <Routes>
                 <Route path="/todos/" element={<TodosListPage/>}/>
@@ -25,8 +23,6 @@ function App() {
                 <Route path="/calendar/" element={<CalendarPage/>}/>
               </Routes>
             </Router>
-          </div>
-        </div>
       </div>
     </div>
   );
