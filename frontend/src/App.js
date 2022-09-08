@@ -19,6 +19,7 @@ function App() {
         </div>
             <Router>
               <Routes>
+                <Route path="/" element={<HomePage/>}/>
                 <Route path="/home/" element={<HomePage/>}/>
                 <Route path="/todos/" element={<TodosListPage/>}/>
                 <Route path="/todos/todo/:id" element={<TodoPage/>}/>
