@@ -19,19 +19,17 @@ const TodosListPage = () => {
   }
 
   return (
-    <div className = "container dark">
-      <div className='app'>
-      <div className = "todos">
-        <div className = "todos-header">
-          <h2 className="todos-title">&#9782; Todos</h2>
-          <p className="todos-count">{todos.length}</p>
-        </div>
-        <div className = "todos-list">
-          {todos.map((todo, index) =>(
-          <ListItem key={index} todo = {todo}/>))}
-        </div>
-        <AddButton/>
-      </div>
+    <div className='AppTodo'>
+        <div className = "todos">
+          <div className = "todos-header">
+            <h2 className="todos-title">&#9782; Todos</h2>
+            <p className="todos-count">{todos.length}</p>
+          </div>
+          <div className = "todos-list">
+            {todos.map((todo, index) =>(
+            <ListItem key={index} todo = {todo}/>))}
+          </div>
+          <AddButton/>
       </div>
     </div> 
   )

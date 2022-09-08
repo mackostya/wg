@@ -4,6 +4,7 @@ import './App.css';
 import Sidebar from './components/Sidebar'
 import Header from './components/Header';
 
+import HomePage from './pages/HomePage'
 import TodosListPage from './pages/TodosListPage'
 import TodoPage from './pages/TodoPage'
 import CalendarPage from './pages/CalendarPage';
@@ -18,6 +19,7 @@ function App() {
         </div>
             <Router>
               <Routes>
+                <Route path="/home/" element={<HomePage/>}/>
                 <Route path="/todos/" element={<TodosListPage/>}/>
                 <Route path="/todos/todo/:id" element={<TodoPage/>}/>
                 <Route path="/calendar/" element={<CalendarPage/>}/>

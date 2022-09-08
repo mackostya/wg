@@ -27,7 +27,7 @@ const CalendarPage = () => {
 
 
   return (
-    <div>
+    <div className='CalendarApp'>
         <FullCalendar
               plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
               initialView="dayGridMonth"
