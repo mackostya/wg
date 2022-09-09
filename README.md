@@ -10,10 +10,18 @@ Tasks:
 
 # Current state of the project
 
+Todos:
+
 <p align="left">
-<image src="icons/Todos.png" width = "600">
+<image src="icons/Todos.png" width = "500">
 <spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
-<image src=icons/Todo_example.png width = "181">
+<image src=icons/Todos_edit.png width = "500">
+</p>
+
+Calendar:
+
+<p>
+<image src="icons/Calendar.png" width = "500">
 </p>
 
 # Commands
