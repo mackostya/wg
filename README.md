@@ -13,15 +13,15 @@ Tasks:
 Todos:
 
 <p align="left">
-<image src="icons/Todos.png" width = "500">
+<image src="icons/Todos.png" width = "700">
 <spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
-<image src=icons/Todos_edit.png width = "500">
+<image src=icons/Todos_edit.png width = "700">
 </p>
 
 Calendar:
 
 <p>
-<image src="icons/Calendar.png" width = "500">
+<image src="icons/Calendar.png" width = "700">
 </p>
 
 # Commands
