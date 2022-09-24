@@ -44,7 +44,7 @@ def get_routes(request):
 
 
 @api_view(['GET'])
-def get_todos(reques):
+def get_todos(request):
     todos = Todo.objects.all().order_by('-updated')
     serializer = TodoSerializer(todos, many=True)
     return Response(serializer.data)
