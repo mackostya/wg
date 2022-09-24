@@ -4,7 +4,6 @@ import AddButton from '../components/AddButton';
 import { API_PATH } from '../Config';
 
 const TodosListPage = () => {
-  console.log("In TodosListPage ")
   let [todos, setTodos] = useState([])
   useEffect(()=> {
     getTodos()
@@ -12,9 +11,7 @@ const TodosListPage = () => {
 
   let getTodos = async () => {
     let response = await fetch(`${API_PATH}/api/todos/`)
-    console.log("data:", response)
     let data = await response.json()
-    console.log('Data:', data)
     setTodos(data)
   }
 
@@ -22,7 +19,7 @@ const TodosListPage = () => {
     <div className='AppTodo'>
         <div className = "todos">
           <div className = "todos-header">
-            <h2 className="todos-title">&#9782; Todos</h2>
+            <h2 className="todos-title">&#9782; Todos </h2>
             <p className="todos-count">{todos.length}</p>
           </div>
           <div className = "todos-list">
