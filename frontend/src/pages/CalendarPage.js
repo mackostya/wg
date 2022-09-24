@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from '../components/event-utils'
+import { API_PATH } from '../Config';
 
 function renderEventContent(eventInfo) {
   return (
@@ -41,28 +42,38 @@ function handleDateSelect(selectInfo){
   }
 }
 
-
 const CalendarPage = () => {
+  let [events, setEvents] = useState([])
+  useEffect(()=> {
+    getEvents()
+  }, [])
 
-
+  let getEvents = async () => {
+    let response = await fetch(`${API_PATH}/api/calendarapi/`)
+    let data = await response.json()
+    console.log("Data: ", data)
+    console.log("Initial events: ", INITIAL_EVENTS)
+    setEvents(data)
+  }
+  let calendar = <FullCalendar
+    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+    initialView="dayGridMonth"
+    eventContent={renderEventContent}
+    eventClick={handleEventClick}
+    // dateClick={handleDateClick}
+    editable={true}
+    selectable={true}
+    selectMirror={true}
+    dayMaxEvents={true}
+    weekends={true}
+    select={handleDateSelect}
+    events= {
+      events
+    }
+  />
   return (
     <div className='CalendarApp'>
-        <FullCalendar
-              plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-              initialView="dayGridMonth"
-              eventContent={renderEventContent}
-              eventClick={handleEventClick}
-              // dateClick={handleDateClick}
-              editable={true}
-              selectable={true}
-              selectMirror={true}
-              dayMaxEvents={true}
-              weekends={true}
-              select={handleDateSelect}
-              initialEvents={
-                INITIAL_EVENTS
-          }
-        />
+        {calendar}
     </div>
   )
 }
