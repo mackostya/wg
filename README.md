@@ -1,49 +1,46 @@
-# wg
+<style>
+    .todos {
+        background-color: #52BE80;
+    }
+</style>
 
+<div class="todos" style="text-align:center; font-size:20px;">
+    <strong>
+        WG App
+    </strong>
+</div>
+<spacer type="horizontal">&nbsp&nbsp</spacer>
+<p align="center">
+    <a href="#"><img alt="License" src="https://img.shields.io/github/license/mackostya/wg?label=license&color=green&style=flat"></a>
+    <a href="#"><img alt="Last commit" src="https://img.shields.io/github/last-commit/mackostya/wg/main?color=orange&style=flat"></a>
+</p>
 Web interfaces for a WG.
 
-Tasks:
-- [x] Todo
-- [ ] Calendar
+WG is a Wohmgemeinschaft (engl.: Shared apartment).
+
+**Tasks**:
+- [x] Todo *(backend + frontend)*
+- [x] Calendar *(backend + frontend)*
+*Next step:*
 - [ ] Money management
 - [ ] User Authentification
 
-# Current state of the project
+<div class="todos" style="text-align:center; font-size:20px;">
+    <strong>
+        Current state of the project (visualization)
+    </strong>
+</div>
 
-Todos:
+## Todos
 
 <p align="left">
-<image src="icons/Todos.png" width = "700">
-<spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
-<image src=icons/Todos_edit.png width = "700">
+    <image src="icons/Todos.png" width = "700">
+    <spacer type="horizontal" width="100" height="100">&nbsp&nbsp</spacer>
+    <image src=icons/Todos_edit.png width = "700">
 </p>
 
-Calendar:
+## Calendar
 
 <p>
 <image src="icons/Calendar.png" width = "700">
 </p>
-
-# Commands
-## Django
-`django-admin startproject name`
-
-`django-admin startapp name`
-### Installation
-`pip install django djangorestframework`
-
-
-## NPM
-`npx create-react-app appname`
-
-`cd appname`
-
-`npm start`
-### Installation
-`npm install react-router-dom`
-
-`npm install @material-ui/core`
-
-`npm install @material-ui/icons`
-
-`npm install @mui/icons-material`
