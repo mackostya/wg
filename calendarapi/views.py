@@ -17,7 +17,13 @@ def create_event(request):
     data = request.data
     event = Event.objects.create(
         title=data["title"],
-        date=data["start"]
+        start=data["start"]
     )
     serializer = EventSerializer(event, many=False)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+def delete_event(request, pk):
+    event = Event.objects.get(id=pk)
+    event.delete()
+    return Response("Event was deleted!")
