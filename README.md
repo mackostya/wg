@@ -1,15 +1,5 @@
-<style>
-    .todos {
-        background-color: #52BE80;
-    }
-</style>
+# WG App
 
-<div class="todos" style="text-align:center; font-size:20px;">
-    <strong>
-        WG App
-    </strong>
-</div>
-<spacer type="horizontal">&nbsp&nbsp</spacer>
 <p align="center">
     <a href="#"><img alt="License" src="https://img.shields.io/github/license/mackostya/wg?label=license&color=green&style=flat"></a>
     <a href="#"><img alt="Last commit" src="https://img.shields.io/github/last-commit/mackostya/wg/main?color=orange&style=flat"></a>
@@ -25,13 +15,10 @@ WG is a Wohmgemeinschaft (engl.: Shared apartment).
 - [ ] Money management
 - [ ] User Authentification
 
-<div class="todos" style="text-align:center; font-size:20px;">
-    <strong>
-        Current state of the project (visualization)
-    </strong>
-</div>
 
-## Todos
+# Current state of the project (visualization)
+
+### Todos
 
 <p align="left">
     <image src="icons/Todos.png" width = "700">
@@ -39,7 +26,7 @@ WG is a Wohmgemeinschaft (engl.: Shared apartment).
     <image src=icons/Todos_edit.png width = "700">
 </p>
 
-## Calendar
+### Calendar
 
 <p>
 <image src="icons/Calendar.png" width = "700">
