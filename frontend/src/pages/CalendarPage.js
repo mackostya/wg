@@ -32,7 +32,9 @@ function handleDateSelect(selectInfo){
   let calendarApi = selectInfo.view.calendar
   let createEvent = {
     title: title,
-    start: selectInfo.start
+    start: selectInfo.start,
+    end: selectInfo.end,
+    allDay: false
   }
   calendarApi.unselect() // clear date selection
 
@@ -48,6 +50,7 @@ function handleDateSelect(selectInfo){
     calendarApi.addEvent({
       title: title,
       start: selectInfo.startStr,
+      end: selectInfo.endStr,
       allDay: false 
     })
   }

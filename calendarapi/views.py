@@ -17,7 +17,9 @@ def create_event(request):
     data = request.data
     event = Event.objects.create(
         title=data["title"],
-        start=data["start"]
+        start=data["start"],
+        end=data["end"],
+        allDay=data["allDay"]
     )
     serializer = EventSerializer(event, many=False)
     return Response(serializer.data)
