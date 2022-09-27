@@ -287,7 +287,8 @@ a {
 
 .fc { /* the calendar root */
   height: 100vh;
-  width: 150vh;
+  max-width: 150vh;
+  display: flex;
   margin: 0;
   padding: 0;
 }
