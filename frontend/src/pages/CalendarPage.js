@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { API_PATH } from '../Config';
+import PopupCreateEvent from '../components/PopupCreateEvent'
 
 function renderEventContent(eventInfo) {
   return (
@@ -27,37 +28,9 @@ function handleEventClick(clickInfo){
   }
 }
 
-function handleDateSelect(selectInfo){
-  let title = window.prompt('Please enter a new title for your event')
-  let calendarApi = selectInfo.view.calendar
-  let createEvent = {
-    title: title,
-    start: selectInfo.start,
-    end: selectInfo.end,
-    allDay: false
-  }
-  calendarApi.unselect() // clear date selection
-
-  if (title) {
-    console.log(selectInfo)
-    fetch(`${API_PATH}/api/calendarapi/create`, {
-      method: "POST",
-      headers:{
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(createEvent)
-    })
-    calendarApi.addEvent({
-      title: title,
-      start: selectInfo.startStr,
-      end: selectInfo.endStr,
-      allDay: false 
-    })
-  }
-}
-
 const CalendarPage = () => {
   let [events, setEvents] = useState([])
+  let [popup, setPopup] = useState(false)
   useEffect(()=> {
     getEvents()
   }, [])
@@ -67,25 +40,60 @@ const CalendarPage = () => {
     let data = await response.json()
     setEvents(data)
   }
+
+  function handleDateSelect(selectInfo){
+    setPopup(true)
+    // let title = window.prompt('Please enter a new title for your event')
+    // let calendarApi = selectInfo.view.calendar
+    // let createEvent = {
+    //   title: title,
+    //   start: selectInfo.start,
+    //   end: selectInfo.end,
+    //   allDay: false
+    // }
+    // calendarApi.unselect() // clear date selection
+
+    // if (title) {
+    //   console.log(selectInfo)
+    //   fetch(`${API_PATH}/api/calendarapi/create`, {
+    //     method: "POST",
+    //     headers:{
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(createEvent)
+    //   })
+    //   calendarApi.addEvent({
+    //     title: title,
+    //     start: selectInfo.startStr,
+    //     end: selectInfo.endStr,
+    //     allDay: false 
+    //   })
+    // }
+  }
+
   let calendar = <FullCalendar
-    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-    initialView="dayGridMonth"
-    eventContent={renderEventContent}
-    eventClick={handleEventClick}
-    // dateClick={handleDateClick}
-    editable={true}
-    selectable={true}
-    selectMirror={true}
-    dayMaxEvents={true}
-    weekends={true}
-    select={handleDateSelect}
-    events= {
-      events
-    }
+  plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+  initialView="dayGridMonth"
+  eventContent={renderEventContent}
+  eventClick={handleEventClick}
+  // dateClick={handleDateClick}
+  editable={true}
+  selectable={true}
+  selectMirror={true}
+  dayMaxEvents={true}
+  weekends={true}
+  select={handleDateSelect}
+  events= {
+    events
+  }
   />
+
   return (
     <div className='CalendarApp'>
-        {calendar}
+      {calendar}
+      <PopupCreateEvent trigger={popup} setTrigger={setPopup}>
+        <h3>My popup</h3>
+      </PopupCreateEvent>
     </div>
   )
 }

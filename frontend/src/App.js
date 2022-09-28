@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-import './App.css';
+import './styling/App.css';
 import Sidebar from './components/Sidebar'
 import Header from './components/Header';
 
@@ -17,15 +17,15 @@ function App() {
         <div>
           <Sidebar/>
         </div>
-            <Router>
-              <Routes>
-                <Route path="/" element={<HomePage/>}/>
-                <Route path="/home/" element={<HomePage/>}/>
-                <Route path="/todos/" element={<TodosListPage/>}/>
-                <Route path="/todos/todo/:id" element={<TodoPage/>}/>
-                <Route path="/calendar/" element={<CalendarPage/>}/>
-              </Routes>
-            </Router>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/home/" element={<HomePage/>}/>
+            <Route path="/todos/" element={<TodosListPage/>}/>
+            <Route path="/todos/todo/:id" element={<TodoPage/>}/>
+            <Route path="/calendar/" element={<CalendarPage/>}/>
+          </Routes>
+        </Router>
       </div>
     </div>
   );
