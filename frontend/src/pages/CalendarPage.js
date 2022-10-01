@@ -18,16 +18,16 @@ function renderEventContent(eventInfo) {
 function handleEventClick(clickInfo){
   if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
     fetch(`${API_PATH}/api/calendarapi/${clickInfo.event.id}/delete`,{
-        method: "DELETE",
-        headers:{
-            'Content-Type': 'application/json'
-            },
-        body: JSON.stringify(clickInfo.event)}
-    )
+      method: "DELETE",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clickInfo.event)}
+      )
     clickInfo.event.remove()
   }
 }
-
+  
 // eslint-disable-next-line no-extend-native
 Date.prototype.yyyymmdd = function() {
   var mm = this.getMonth() + 1; // getMonth() is zero-based
@@ -36,13 +36,14 @@ Date.prototype.yyyymmdd = function() {
   return [this.getFullYear(),
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
-          ].join('/');
+          ].join('-');
 };
-
+  
 const CalendarPage = () => {
   let [events, setEvents] = useState([])
   let [popup, setPopup] = useState(false)
   let [selectedDate, setSelectedDate] = useState([])
+  let [calendarApi, setCalendarApi] = useState([])
   useEffect(()=> {
     getEvents()
   }, [])
@@ -54,6 +55,7 @@ const CalendarPage = () => {
   }
 
   function handleDateSelect(selectInfo){
+    setCalendarApi(selectInfo.view.calendar)
     setSelectedDate(selectInfo.start.yyyymmdd())
     setPopup(true)
     // let title = window.prompt('Please enter a new title for your event')
@@ -85,28 +87,26 @@ const CalendarPage = () => {
   }
 
   let calendar = <FullCalendar
-  plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-  initialView="dayGridMonth"
-  eventContent={renderEventContent}
-  eventClick={handleEventClick}
-  // dateClick={handleDateClick}
-  editable={true}
-  selectable={true}
-  selectMirror={true}
-  dayMaxEvents={true}
-  weekends={true}
-  select={handleDateSelect}
-  events= {
-    events
-  }
+    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+    initialView="dayGridMonth"
+    eventContent={renderEventContent}
+    eventClick={handleEventClick}
+    // dateClick={handleDateClick}
+    editable={true}
+    selectable={true}
+    selectMirror={true}
+    dayMaxEvents={true}
+    weekends={true}
+    select={handleDateSelect}
+    events= {
+      events
+    }
   />
 
   return (
     <div className='CalendarApp'>
       {calendar}
-      <PopupCreateEvent trigger={popup} setTrigger={setPopup}>
-        <h3>{selectedDate}</h3>
-      </PopupCreateEvent>
+      <PopupCreateEvent trigger={popup} setTrigger={setPopup} calendar={calendarApi} startDate={selectedDate}/>
     </div>
   )
 }
