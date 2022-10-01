@@ -28,9 +28,21 @@ function handleEventClick(clickInfo){
   }
 }
 
+// eslint-disable-next-line no-extend-native
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1; // getMonth() is zero-based
+  var dd = this.getDate();
+
+  return [this.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+          ].join('/');
+};
+
 const CalendarPage = () => {
   let [events, setEvents] = useState([])
   let [popup, setPopup] = useState(false)
+  let [selectedDate, setSelectedDate] = useState([])
   useEffect(()=> {
     getEvents()
   }, [])
@@ -42,6 +54,7 @@ const CalendarPage = () => {
   }
 
   function handleDateSelect(selectInfo){
+    setSelectedDate(selectInfo.start.yyyymmdd())
     setPopup(true)
     // let title = window.prompt('Please enter a new title for your event')
     // let calendarApi = selectInfo.view.calendar
@@ -92,7 +105,7 @@ const CalendarPage = () => {
     <div className='CalendarApp'>
       {calendar}
       <PopupCreateEvent trigger={popup} setTrigger={setPopup}>
-        <h3>My popup</h3>
+        <h3>{selectedDate}</h3>
       </PopupCreateEvent>
     </div>
   )

@@ -16,6 +16,8 @@
 
 .popup-inner {
     position: relative;
+    border: outset orange;
+    border-radius: 10px;
     padding: 32px;
     width: 100%;
     max-width: 340px;
@@ -26,10 +28,17 @@
     position: absolute;
     background: orange;
     border: none;
+    border-radius: 3px;
     top: 16px;
     right: 16px;
     height: 20px;
     width: 45px;
     cursor: pointer;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-inner .column {
+    position: center;
+    display: grid;
+    gap: 20px;
 }
