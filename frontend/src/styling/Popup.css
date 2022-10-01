@@ -26,7 +26,20 @@
 
 .popup-inner .close-btn {
     position: absolute;
-    background: orange;
+    background: red;
+    border: none;
+    border-radius: 3px;
+    top: 16px;
+    right: 270px;
+    height: 20px;
+    width: 45px;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-inner .save-btn {
+    position: absolute;
+    background: rgb(19, 228, 75);
     border: none;
     border-radius: 3px;
     top: 16px;
