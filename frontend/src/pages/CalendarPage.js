@@ -27,9 +27,9 @@ function handleEventClick(clickInfo){
     clickInfo.event.remove()
   }
 }
-  
+
 // eslint-disable-next-line no-extend-native
-Date.prototype.yyyymmdd = function() {
+Date.prototype.yyyymmddstart = function() {
   var mm = this.getMonth() + 1; // getMonth() is zero-based
   var dd = this.getDate();
 
@@ -37,12 +37,24 @@ Date.prototype.yyyymmdd = function() {
           (mm>9 ? '' : '0') + mm,
           (dd>9 ? '' : '0') + dd
           ].join('-');
-};
+}
+
+// eslint-disable-next-line no-extend-native
+Date.prototype.yyyymmddend = function() {
+  var mm = this.getMonth() + 1; // getMonth() is zero-based
+  var dd = this.getDate() - 1; // enddate is always todays date+1
+
+  return [this.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+          ].join('-');
+}
   
 const CalendarPage = () => {
   let [events, setEvents] = useState([])
   let [popup, setPopup] = useState(false)
-  let [selectedDate, setSelectedDate] = useState([])
+  let [startDate, setStartDate] = useState([])
+  let [endDate, setEndDate] = useState([])
   let [calendarApi, setCalendarApi] = useState([])
   useEffect(()=> {
     getEvents()
@@ -56,42 +68,16 @@ const CalendarPage = () => {
 
   function handleDateSelect(selectInfo){
     setCalendarApi(selectInfo.view.calendar)
-    setSelectedDate(selectInfo.start.yyyymmdd())
+    setStartDate(selectInfo.start.yyyymmddstart())
+    setEndDate(selectInfo.end.yyyymmddend())
     setPopup(true)
-    // let title = window.prompt('Please enter a new title for your event')
-    // let calendarApi = selectInfo.view.calendar
-    // let createEvent = {
-    //   title: title,
-    //   start: selectInfo.start,
-    //   end: selectInfo.end,
-    //   allDay: false
-    // }
-    // calendarApi.unselect() // clear date selection
-
-    // if (title) {
-    //   console.log(selectInfo)
-    //   fetch(`${API_PATH}/api/calendarapi/create`, {
-    //     method: "POST",
-    //     headers:{
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(createEvent)
-    //   })
-    //   calendarApi.addEvent({
-    //     title: title,
-    //     start: selectInfo.startStr,
-    //     end: selectInfo.endStr,
-    //     allDay: false 
-    //   })
-    // }
   }
-
   let calendar = <FullCalendar
     plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+    timeZone= 'local'
     initialView="dayGridMonth"
     eventContent={renderEventContent}
     eventClick={handleEventClick}
-    // dateClick={handleDateClick}
     editable={true}
     selectable={true}
     selectMirror={true}
@@ -106,7 +92,13 @@ const CalendarPage = () => {
   return (
     <div className='CalendarApp'>
       {calendar}
-      <PopupCreateEvent trigger={popup} setTrigger={setPopup} calendar={calendarApi} startDate={selectedDate}/>
+      <PopupCreateEvent 
+        trigger={popup} 
+        setTrigger={setPopup} 
+        calendar={calendarApi} 
+        startDate={startDate} 
+        endDate={endDate}
+      />
     </div>
   )
 }

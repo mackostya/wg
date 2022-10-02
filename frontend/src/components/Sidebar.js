@@ -2,8 +2,6 @@ import React from 'react'
 import {SidebarData} from "./SidebarData"
 
 const Sidebar = () => {
-  console.log("pathname: ", window.location.pathname)
-  //console.log("expected: ", val.link)
   return (
     <div className = "Sidebar">
       <ul className = "SidebarList">

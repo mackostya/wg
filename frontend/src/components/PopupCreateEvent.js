@@ -5,14 +5,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { API_PATH } from '../Config';
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import React, {useState, useEffect}  from 'react'
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import '../styling/Popup.css'
 
 function PopupCreateEvent(props){
-  const [startDateTime, setStartDateTime] = useState(dayjs('2018-01-01T00:00:00.000Z'))
-  const [endDate, setEndDate] = useState(dayjs(''))
-  const [title, setTitle] = useState("")
-  const [save, setSave] = useState(false)
+  const [startDateTime, setStartDateTime] = useState(dayjs('2022-01-01T09:00:00.000'))
+  let [endDateTime, setEndDateTime] = useState(dayjs('2022-01-01T10:00:00.000'))
+  let [title, setTitle] = useState("")
+  let [save, setSave] = useState(false)
   useEffect(()=> {
     createEvent()
   }, [save])
@@ -20,19 +20,28 @@ function PopupCreateEvent(props){
   let createEvent = async () => {
     if (save===true)
     {
-      let dateFull = props.startDate.concat("T", startDateTime)
-      console.log(dateFull)
-      console.log(props.calendar.props)
+      let startDateAndTime = [props.startDate, 
+                      " ", 
+                      (startDateTime.get("hours")>9 ? '' : '0') + startDateTime.get("hours"), 
+                      ":",
+                      (startDateTime.get("minutes")>9 ? '' : '0') + startDateTime.get("minutes")].join("")
+      let endDateAndTime = [props.endDate, 
+                        " ", 
+                        (endDateTime.get("hours")>9 ? '' : '0') + endDateTime.get("hours"), 
+                        ":",
+                        (endDateTime.get("minutes")>9 ? '' : '0') + endDateTime.get("minutes")].join("")
+      console.log("Start date: ", startDateAndTime)
+      console.log("End date: ", endDateAndTime)
       let event = {
         title: title,
-        start: props.startDate,
-        end: endDate,
+        start: startDateAndTime,
+        end: endDateAndTime,
         allDay: false
       }
       props.calendar.addEvent({
             title: title,
-            start: props.startDate,
-            end: endDate,
+            start: startDateAndTime,
+            end: endDateAndTime,
             allDay: false 
           })
       fetch(`${API_PATH}/api/calendarapi/create`, {
@@ -63,8 +72,15 @@ function PopupCreateEvent(props){
             />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
+                  label="start Time"
                   value={startDateTime}
                   onChange={setStartDateTime}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+                <TimePicker
+                  label="end Time"
+                  value={endDateTime}
+                  onChange={setEndDateTime}
                   renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>

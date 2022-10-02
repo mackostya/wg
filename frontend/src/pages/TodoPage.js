@@ -7,7 +7,6 @@ import {ReactComponent as ArrowLeft} from '../assets/arrow-left.svg';
 import { API_PATH } from '../Config';
 
 const TodoPage = () => {
-    console.log("In TodosPage ")
     const params = useParams()
     let todoId = params.id
     let navigate = useNavigate()
@@ -57,7 +56,6 @@ const TodoPage = () => {
     }
 
     let handleSubmit = () => {
-        console.log("todo:", todo)
         if (todoId !== "new" && !todo.body){
             deleteTodo()
         }else if (todoId!== "new"){
