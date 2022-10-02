@@ -33,7 +33,6 @@ const ListItem = ({todo}) => {
         <h3>{getTitle(todo)}</h3>
         <p><span>{getTime(todo)}</span>{getContent(todo)}</p>
       </div>
-
     </Link>
   )
 }
